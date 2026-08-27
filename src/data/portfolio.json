@@ -1,0 +1,24 @@
+{
+  "nav": ["Sobre", "Sobre mim", "Serviços", "Projetos", "Stack", "Contato"],
+  "socials": {
+    "linkedin": "https://www.linkedin.com/in/rhuanspablodev",
+    "github": "https://github.com/rhuanspablo025-blip",
+    "instagram": "https://www.instagram.com/rhuan_santosz/"
+  },
+  "business": {
+    "name": "Rhuan Pablo Santos de Sá",
+    "registration": "MEI",
+    "cnpj": "68.776.600/0001-80"
+  },
+  "services": [
+    { "number": "01", "title": "Automação de processos", "text": "Fluxos repetitivos viram sistemas confiáveis: scripts, integrações e relatórios que trabalham enquanto você foca no negócio.", "tags": ["Python", "APIs", "Scripts"] },
+    { "number": "02", "title": "Backend que aguenta", "text": "APIs REST bem estruturadas, banco de dados modelado e documentação para tirar a operação do improviso.", "tags": ["FastAPI", "PostgreSQL", "REST"] },
+    { "number": "03", "title": "Interfaces com intenção", "text": "Produtos digitais responsivos, rápidos e claros para transformar uma boa solução técnica em uma experiência que dá vontade de usar.", "tags": ["React", "TypeScript", "CSS"] }
+  ],
+  "projects": [
+    { "title": "Site do queijo", "category": "Site institucional", "description": "Site de divulgação dos produtores de queijo de Porteirinha, desenvolvido para a última Festa do Queijo em parceria com a IFTCH Jr.", "stack": ["React", "TypeScript", "CSS"], "url": "https://share.google/G4n1N34YJxOvRvEq3", "featured": true },
+    { "title": "Landing page do sorteio", "category": "Landing page", "description": "Coordenação e desenvolvimento de uma landing page para a ganhadora de um sorteio realizado pela IFTCH Jr., empresa júnior da faculdade.", "stack": ["React", "TypeScript", "CSS"] },
+    { "title": "Ficha de treino Gilmarcio", "category": "Aplicação web", "description": "Projeto web para organização e apresentação de uma ficha de treino personalizada.", "stack": ["React", "TypeScript", "CSS"] }
+  ],
+  "stack": ["Python", "FastAPI", "TypeScript", "React", "PostgreSQL", "SQLite", "Pandas", "Git", "Analista de sistemas"]
+}
