@@ -50,6 +50,44 @@ function App() {
 
   useEffect(() => { document.documentElement.dataset.theme = dark ? 'dark' : 'light'; }, [dark]);
   useEffect(() => {
+    document.querySelectorAll<HTMLInputElement>('input[type="email"]').forEach((input) => input.removeAttribute('pattern'));
+  }, []);
+  useEffect(() => {
+    const formatPhone = (event: Event) => {
+      const input = event.target as HTMLInputElement;
+      if (input.type !== 'tel') return;
+      const digits = input.value.replace(/\D/g, '').slice(0, 11);
+      if (digits.length <= 2) {
+        input.value = digits ? `(${digits}` : '';
+      } else if (digits.length <= 10) {
+        input.value = `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+      } else {
+        input.value = `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+      }
+    };
+    document.addEventListener('input', formatPhone);
+    return () => document.removeEventListener('input', formatPhone);
+  }, []);
+  useEffect(() => {
+    const form = document.querySelector<HTMLFormElement>('.contact-form');
+    if (!form) return;
+    const saveContact = (event: SubmitEvent) => {
+      const formData = new FormData(event.currentTarget as HTMLFormElement);
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.get('name'),
+          email: formData.get('email'),
+          phone: formData.get('phone'),
+          message: formData.get('message'),
+        }),
+      }).catch(() => undefined);
+    };
+    form.addEventListener('submit', saveContact);
+    return () => form.removeEventListener('submit', saveContact);
+  }, []);
+  useEffect(() => {
     fetch('/api/content')
       .then((response) => response.ok ? response.json() : Promise.reject())
       .then((databaseContent) => setSiteContent(databaseContent as typeof content))
@@ -92,7 +130,7 @@ function App() {
 
       <section className="section stack-section" id="stack"><div className="section-kicker">/ FERRAMENTAS</div><div className="stack-layout"><h2>Uma stack<br /><span>sem ego.</span></h2><p>Escolho a ferramenta que deixa a solução mais simples. Hoje, meu terreno principal é o ecossistema Python, com React no front e curiosidade suficiente para continuar aprendendo.</p><div className="stack-list">{siteContent.stack.map((item, index) => <span key={item}><b>0{index + 1}</b>{item}</span>)}</div></div></section>
 
-      <section className="section contact-section" id="contato"><div className="contact-copy"><div className="section-kicker">/ O PRÓXIMO PASSO</div><h2>Tem um problema<br /><em>interessante?</em></h2><p>Me conte onde está o atrito. A primeira conversa é por minha conta.</p><div className="contact-links"><a href="mailto:rhuanspablo025@gmail.com">rhuanspablo025@gmail.com <ArrowUpRight size={17} /></a><a href={content.socials.linkedin} target="_blank" rel="noreferrer"><BriefcaseBusiness size={16} /> LinkedIn <ArrowUpRight size={17} /></a><a href={content.socials.github} target="_blank" rel="noreferrer"><Code2 size={16} /> GitHub <ArrowUpRight size={17} /></a><a href={content.socials.instagram} target="_blank" rel="noreferrer"><AtSign size={16} /> Instagram <ArrowUpRight size={17} /></a></div><div className="mei-card"><span>PRESTAÇÃO DE SERVIÇOS</span><strong>{content.business.registration} · {content.business.name}</strong><small>CNPJ {content.business.cnpj}</small></div></div><form className="contact-form" onSubmit={(event) => { event.preventDefault(); const formData = new FormData(event.currentTarget); const message = encodeURIComponent(`Olá! Meu nome é ${formData.get('name')}.\nE-mail: ${formData.get('email')}\nTelefone: ${formData.get('phone')}\n\n${formData.get('message')}`); window.open(`https://wa.me/5538999939219?text=${message}`, '_blank', 'noopener,noreferrer'); setSent(true); }}><label>Seu nome<input name="name" required placeholder="Como posso te chamar?" /></label><label>Seu e-mail<input name="email" required type="email" pattern="[^\\s@]+@[^\\s@]+\\.[^\\s@]+" title="Digite um e-mail válido." placeholder="voce@empresa.com" /></label><label>Seu telefone<input name="phone" required type="tel" inputMode="tel" pattern="\\+?[0-9\\s()\\-]{10,}" title="Digite um telefone válido com DDD." placeholder="(38) 99999-9999" /></label><label>O que você tem em mente?<textarea name="message" required placeholder="Um novo produto, uma automação, uma ideia..." rows={4} /></label><button className="button button-dark" type="submit">{sent ? <>Mensagem preparada <Check size={17} /></> : <>Enviar mensagem <ArrowUpRight size={17} /></>}</button></form></section>
+      <section className="section contact-section" id="contato"><div className="contact-copy"><div className="section-kicker">/ O PRÓXIMO PASSO</div><h2>Tem um problema<br /><em>interessante?</em></h2><p>Me conte onde está o atrito. A primeira conversa é por minha conta.</p><div className="contact-links"><a href="mailto:rhuanspablo025@gmail.com">rhuanspablo025@gmail.com <ArrowUpRight size={17} /></a><a href={content.socials.linkedin} target="_blank" rel="noreferrer"><BriefcaseBusiness size={16} /> LinkedIn <ArrowUpRight size={17} /></a><a href={content.socials.github} target="_blank" rel="noreferrer"><Code2 size={16} /> GitHub <ArrowUpRight size={17} /></a><a href={content.socials.instagram} target="_blank" rel="noreferrer"><AtSign size={16} /> Instagram <ArrowUpRight size={17} /></a></div><div className="mei-card"><span>PRESTAÇÃO DE SERVIÇOS</span><strong>{content.business.registration} · {content.business.name}</strong><small>CNPJ {content.business.cnpj}</small></div></div><form className="contact-form" onSubmit={(event) => { event.preventDefault(); const formData = new FormData(event.currentTarget); const message = encodeURIComponent(`Olá! Meu nome é ${formData.get('name')}.\nE-mail: ${formData.get('email')}\nTelefone: ${formData.get('phone')}\n\n${formData.get('message')}`); window.open(`https://wa.me/5538999939219?text=${message}`, '_blank', 'noopener,noreferrer'); setSent(true); }}><label>Seu nome<input name="name" required placeholder="Como posso te chamar?" /></label><label>Seu e-mail<input name="email" required type="email" title="Digite um e-mail válido." placeholder="voce@empresa.com" /></label><label>Seu telefone<input name="phone" required type="tel" inputMode="tel" pattern="\\+?[0-9\\s()\\-]{10,}" title="Digite um telefone válido com DDD." placeholder="(38) 99999-9999" /></label><label>O que você tem em mente?<textarea name="message" required placeholder="Um novo produto, uma automação, uma ideia..." rows={4} /></label><button className="button button-dark" type="submit">{sent ? <>Mensagem preparada <Check size={17} /></> : <>Enviar mensagem <ArrowUpRight size={17} /></>}</button></form></section>
         <section className="section contact-section" id="contato"><div className="contact-copy"><div className="section-kicker">/ O PRÓXIMO PASSO</div><h2>Tem um problema<br /><em>interessante?</em></h2><p>Me conte onde está o atrito. A primeira conversa é por minha conta.</p><div className="contact-links"><a href="mailto:rhuanspablo025@gmail.com">rhuanspablo025@gmail.com <ArrowUpRight size={17} /></a><a href={siteContent.socials.linkedin} target="_blank" rel="noreferrer"><BriefcaseBusiness size={16} /> LinkedIn <ArrowUpRight size={17} /></a><a href={siteContent.socials.github} target="_blank" rel="noreferrer"><Code2 size={16} /> GitHub <ArrowUpRight size={17} /></a><a href={siteContent.socials.instagram} target="_blank" rel="noreferrer"><AtSign size={16} /> Instagram <ArrowUpRight size={17} /></a></div><div className="mei-card"><span>PRESTAÇÃO DE SERVIÇOS</span><strong>{siteContent.business.registration} · {siteContent.business.name}</strong><small>CNPJ {siteContent.business.cnpj}</small></div></div><form className="contact-form" onSubmit={async (event) => { event.preventDefault(); const formData = new FormData(event.currentTarget); const contact = { name: formData.get('name'), email: formData.get('email'), phone: formData.get('phone'), message: formData.get('message') }; try { await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(contact) }); } catch {} const message = encodeURIComponent(`Olá! Meu nome é ${contact.name}.\nE-mail: ${contact.email}\nTelefone: ${contact.phone}\n\n${contact.message}`); window.open(`https://wa.me/5538999939219?text=${message}`, '_blank', 'noopener,noreferrer'); setSent(true); }}><label>Seu nome<input name="name" required placeholder="Como posso te chamar?" /></label><label>Seu e-mail<input name="email" required type="email" pattern="[^\\s@]+@[^\\s@]+\\.[^\\s@]+" title="Digite um e-mail válido." placeholder="voce@empresa.com" /></label><label>Seu telefone<input name="phone" required type="tel" inputMode="tel" pattern="\\+?[0-9\\s()\\-]{10,}" title="Digite um telefone válido com DDD." placeholder="(38) 99999-9999" /></label><label>O que você tem em mente?<textarea name="message" required placeholder="Um novo produto, uma automação, uma ideia..." rows={4} /></label><button className="button button-dark" type="submit">{sent ? <>Mensagem preparada <Check size={17} /></> : <>Enviar mensagem <ArrowUpRight size={17} /></>}</button></form></section>
 
       <section className="faq-section" id="faq"><div className="section-kicker">/ PERGUNTAS FREQUENTES</div><div className="faq-list">{faqs.map(([question, answer], index) => <div className={openFaq === index ? 'faq open' : 'faq'} key={question}><button onClick={() => setOpenFaq(openFaq === index ? null : index)}><span>{question}</span><ChevronDown size={18} /></button>{openFaq === index && <p>{answer}</p>}</div>)}</div></section>

@@ -15,6 +15,7 @@
     "lucide-react": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "resend": "^6.24.0",
     "typescript": "latest",
     "vite": "latest"
   },
