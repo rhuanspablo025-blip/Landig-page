@@ -151,3 +151,12 @@ npx tsc --noEmit --ignoreConfig --skipLibCheck --esModuleInterop --module ESNext
 - O banco deve ser protegido pelas variaveis de ambiente da Vercel.
 - O endpoint publico de contato deve receber validacao, rate limit ou CAPTCHA antes de uma campanha publica para reduzir spam.
 - O WhatsApp continua sendo o canal de conversa principal; o banco funciona como registro do lead.
+
+## Seguranca aplicada
+
+- Headers de seguranca na Vercel: CSP, `X-Frame-Options`, `nosniff`, politica de referencia e Permissions Policy.
+- Validacao de origem, metodo HTTP, formato de e-mail e limite de tamanho dos campos.
+- Rate limit basico de cinco tentativas por IP a cada dez minutos.
+- Respostas de conteudo sem cache.
+
+Para trafego maior, configure Vercel WAF ou um rate limit compartilhado com Redis/Upstash. O rate limit em memoria protege a instancia atual, mas nao substitui uma camada distribuida.

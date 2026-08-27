@@ -8,6 +8,8 @@ export default async function handler(request: VercelRequest, response: VercelRe
     return response.status(405).json({ error: 'Método não permitido.' });
   }
 
+  response.setHeader('Cache-Control', 'no-store');
+
   try {
     const [settings, services, projects, stack] = await Promise.all([
       sql`SELECT key, value FROM site_settings ORDER BY key`,

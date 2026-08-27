@@ -98,6 +98,10 @@ Recomendacoes antes de uma divulgacao maior:
 - Restringir acesso ao SQL Editor e ao projeto Vercel.
 - Monitorar erros das funcoes serverless.
 
+As rotas tambem aplicam validacao de origem, limites de tamanho, formato de e-mail e rate limit basico de cinco tentativas por IP a cada dez minutos. A Vercel envia headers de seguranca por meio de `vercel.json`, incluindo CSP, bloqueio de iframe, `nosniff`, Permissions Policy e politica de referencia.
+
+O rate limit em memoria e adequado como protecao inicial, mas pode ser contornado quando a Vercel distribui requisicoes em varias instancias. Para uma operacao maior, use Vercel WAF ou Redis/Upstash com contador compartilhado.
+
 ## 6. Cookies e armazenamento local
 
 O site nao cria cookies de publicidade nem usa ferramentas de analytics. O banner registra a escolha em `localStorage` com a chave `rp-cookie-choice`. A escolha do tema tambem e aplicada no documento, mas nao e persistida no banco.
