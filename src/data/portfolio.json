@@ -190,11 +190,11 @@
     {
       "title": "Ficha de treino Gilmarcio",
       "category": "Sites e landing pages",
-      "description": "Aplicação web para organizar e apresentar uma ficha de treino personalizada, com foco em consulta simples pelo aluno.",
+      "description": "Aplicação web de ficha de treino personalizada, com dias de treino, registro de séries e cargas, indicador de progresso e cronômetro de descanso. O estado é salvo no navegador.",
       "stack": [
-        "React",
-        "TypeScript",
-        "CSS"
+        "HTML",
+        "JavaScript",
+        "Tailwind CSS"
       ],
       "url": "https://fincha-de-treino-gilmarcio.vercel.app/",
       "featured": false,
