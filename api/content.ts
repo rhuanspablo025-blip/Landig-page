@@ -20,10 +20,14 @@ export default async function handler(request: VercelRequest, response: VercelRe
     ]);
 
     const settingMap = Object.fromEntries(settings.map((item) => [item.key, item.value]));
+    const readSetting = (key: string, fallback: unknown) => {
+      const value = settingMap[key];
+      return value == null ? fallback : typeof value === 'string' ? JSON.parse(value) : value;
+    };
     return response.status(200).json({
-      nav: JSON.parse(settingMap.nav ?? '[]'),
-      socials: JSON.parse(settingMap.socials ?? '{}'),
-      business: { ...JSON.parse(settingMap.business ?? '{}'), ...portfolio.business },
+      nav: readSetting('nav', []),
+      socials: readSetting('socials', {}),
+      business: { ...(readSetting('business', {}) as Record<string, unknown>), ...portfolio.business },
       services,
       // O catálogo editorial versionado é a fonte principal do portfólio.
       // Registros extras do banco continuam visíveis sem sobrescrever descrições revisadas.
