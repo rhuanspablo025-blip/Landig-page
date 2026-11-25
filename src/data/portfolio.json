@@ -60,7 +60,11 @@
         "Turso/libSQL"
       ],
       "url": "https://www.atlasfit.com.br/",
-      "featured": true
+      "featured": true,
+      "preview": "/images/projects/atlasfit.svg",
+      "previewAlt": "Tela pública de acesso do AtlasFit, com mascote e formulário de entrada",
+      "previewDomain": "atlasfit.com.br",
+      "previewCaption": "EM PRODUÇÃO"
     },
     {
       "title": "AgendaFlow",
@@ -95,7 +99,11 @@
         "SQLite",
         "Turso/libSQL"
       ],
-      "featured": false
+      "featured": false,
+      "preview": "/images/projects/comercial-web-plus.svg",
+      "previewAlt": "Tela pública de acesso ao CRM Comercial Web Plus",
+      "previewDomain": "comercial-web-plus.vercel.app",
+      "previewCaption": "ACESSO RESTRITO"
     },
     {
       "title": "KinkSist ERP API",
@@ -188,8 +196,13 @@
         "TypeScript",
         "CSS"
       ],
-      "url": "https://github.com/rhuanspablo025-blip/fincha-de-treino-gilmarcio",
-      "featured": false
+      "url": "https://fincha-de-treino-gilmarcio.vercel.app/",
+      "featured": false,
+      "preview": "/images/projects/ficha-treino.svg",
+      "previewAlt": "Tela da ficha de treino em uso, com dias, exercícios e progresso",
+      "previewDomain": "fincha-de-treino-gilmarcio.vercel.app",
+      "previewCaption": "EM PRODUÇÃO",
+      "sourceUrl": "https://github.com/rhuanspablo025-blip/fincha-de-treino-gilmarcio"
     }
   ],
   "stack": [
