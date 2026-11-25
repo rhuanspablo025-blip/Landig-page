@@ -1,4 +1,5 @@
 import { neon } from '@neondatabase/serverless';
+import portfolio from '../src/data/portfolio.json';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 const sql = neon(process.env.POSTGRES_URL!);
@@ -24,8 +25,16 @@ export default async function handler(request: VercelRequest, response: VercelRe
       socials: JSON.parse(settingMap.socials ?? '{}'),
       business: JSON.parse(settingMap.business ?? '{}'),
       services,
-      projects: projects.map((project) => ({ ...project, featured: Boolean(project.featured) })),
-      stack: stack.map((item) => item.name),
+      // O catálogo editorial versionado é a fonte principal do portfólio.
+      // Registros extras do banco continuam visíveis sem sobrescrever descrições revisadas.
+      projects: [
+        ...portfolio.projects,
+        ...projects
+          .filter((project) => !portfolio.projects.some((item) =>
+            item.title.toLocaleLowerCase('pt-BR') === String(project.title).toLocaleLowerCase('pt-BR')))
+          .map((project) => ({ ...project, featured: Boolean(project.featured) })),
+      ],
+      stack: [...new Set([...portfolio.stack, ...stack.map((item) => String(item.name))])],
     });
   } catch (error) {
     console.error('Erro ao carregar conteúdo:', error);
