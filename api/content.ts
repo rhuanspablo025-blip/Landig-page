@@ -23,7 +23,7 @@ export default async function handler(request: VercelRequest, response: VercelRe
     return response.status(200).json({
       nav: JSON.parse(settingMap.nav ?? '[]'),
       socials: JSON.parse(settingMap.socials ?? '{}'),
-      business: JSON.parse(settingMap.business ?? '{}'),
+      business: { ...JSON.parse(settingMap.business ?? '{}'), ...portfolio.business },
       services,
       // O catálogo editorial versionado é a fonte principal do portfólio.
       // Registros extras do banco continuam visíveis sem sobrescrever descrições revisadas.
