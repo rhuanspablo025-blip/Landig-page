@@ -1,5 +1,12 @@
 {
-  "nav": ["Sobre", "Sobre mim", "Serviços", "Projetos", "Stack", "Contato"],
+  "nav": [
+    "Sobre",
+    "Sobre mim",
+    "Serviços",
+    "Projetos",
+    "Stack",
+    "Contato"
+  ],
   "socials": {
     "linkedin": "https://www.linkedin.com/in/rhuanspablodev",
     "github": "https://github.com/rhuanspablo025-blip",
@@ -11,14 +18,193 @@
     "cnpj": "68.776.600/0001-80"
   },
   "services": [
-    { "number": "01", "title": "Automação de processos", "text": "Fluxos repetitivos viram sistemas confiáveis: scripts, integrações e relatórios que trabalham enquanto você foca no negócio.", "tags": ["Python", "APIs", "Scripts"] },
-    { "number": "02", "title": "Backend que aguenta", "text": "APIs REST bem estruturadas, banco de dados modelado e documentação para tirar a operação do improviso.", "tags": ["FastAPI", "PostgreSQL", "REST"] },
-    { "number": "03", "title": "Interfaces com intenção", "text": "Produtos digitais responsivos, rápidos e claros para transformar uma boa solução técnica em uma experiência que dá vontade de usar.", "tags": ["React", "TypeScript", "CSS"] }
+    {
+      "number": "01",
+      "title": "Automação de processos",
+      "text": "Fluxos repetitivos viram sistemas confiáveis: scripts, integrações e relatórios que trabalham enquanto você foca no negócio.",
+      "tags": [
+        "Python",
+        "APIs",
+        "Scripts"
+      ]
+    },
+    {
+      "number": "02",
+      "title": "Backend que aguenta",
+      "text": "APIs REST bem estruturadas, banco de dados modelado e documentação para tirar a operação do improviso.",
+      "tags": [
+        "FastAPI",
+        "PostgreSQL",
+        "REST"
+      ]
+    },
+    {
+      "number": "03",
+      "title": "Interfaces com intenção",
+      "text": "Produtos digitais responsivos, rápidos e claros para transformar uma boa solução técnica em uma experiência que dá vontade de usar.",
+      "tags": [
+        "React",
+        "TypeScript",
+        "CSS"
+      ]
+    }
   ],
   "projects": [
-    { "title": "Site do queijo", "category": "Site institucional", "description": "Site de divulgação dos produtores de queijo de Porteirinha, desenvolvido para a última Festa do Queijo em parceria com a IFTCH Jr.", "stack": ["React", "TypeScript", "CSS"], "url": "https://share.google/G4n1N34YJxOvRvEq3", "featured": true },
-    { "title": "Landing page do sorteio", "category": "Landing page", "description": "Coordenação e desenvolvimento de uma landing page para a ganhadora de um sorteio realizado pela IFTCH Jr., empresa júnior da faculdade.", "stack": ["React", "TypeScript", "CSS"] },
-    { "title": "Ficha de treino Gilmarcio", "category": "Aplicação web", "description": "Projeto web para organização e apresentação de uma ficha de treino personalizada.", "stack": ["React", "TypeScript", "CSS"] }
+    {
+      "title": "AtlasFit",
+      "category": "SaaS e produto",
+      "description": "Plataforma de treinos para academias, profissionais e alunos. Reúne fichas semanais, exercícios, vínculos entre personal e aluno e módulos de acompanhamento; o repositório documenta autenticação, banco Turso/libSQL e uma frente financeira. Produto em evolução.",
+      "stack": [
+        "Next.js",
+        "React",
+        "Turso/libSQL"
+      ],
+      "url": "https://www.atlasfit.com.br/",
+      "featured": true
+    },
+    {
+      "title": "AgendaFlow",
+      "category": "SaaS e produto",
+      "description": "Sistema de agendamentos para estabelecimentos com cadastro de serviços e profissionais, disponibilidade, página pública de reservas e painel. A arquitetura separa frontend Next.js e API FastAPI com PostgreSQL, além de prever lembretes.",
+      "stack": [
+        "Next.js",
+        "FastAPI",
+        "PostgreSQL"
+      ],
+      "url": "https://github.com/rhuanspablo025-blip/Agenda-Flow",
+      "featured": false
+    },
+    {
+      "title": "Odonto Class — API WhatsApp",
+      "category": "APIs e sistemas",
+      "description": "API de comunicação para um CRM odontológico. O código organiza envio de mensagens, conversas, campanhas, webhooks da Meta, filas e persistência com Turso. Projeto em desenvolvimento, com fluxos de homologação documentados.",
+      "stack": [
+        "Fastify",
+        "TypeScript",
+        "Turso/libSQL"
+      ],
+      "url": "https://github.com/rhuanspablo025-blip/odonto-class-whatsapp-api",
+      "featured": false
+    },
+    {
+      "title": "Comercial Web Plus",
+      "category": "APIs e sistemas",
+      "description": "Ferramenta interna de prospecção e vendas: busca de empresas por município e segmento, cadastro de oportunidades, responsáveis, etapas do funil e acompanhamento de projetos. Integra fontes cadastrais e de mapas; código privado.",
+      "stack": [
+        "Node.js",
+        "SQLite",
+        "Turso/libSQL"
+      ],
+      "featured": false
+    },
+    {
+      "title": "KinkSist ERP API",
+      "category": "APIs e sistemas",
+      "description": "API REST para gestão de negócios alimentícios, com módulos documentados de usuários, fornecedores, clientes, produtos, estoque, produção, pedidos, vendas e financeiro. O repositório descreve autenticação JWT e persistência PostgreSQL.",
+      "stack": [
+        "Fastify",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL"
+      ],
+      "url": "https://github.com/rhuanspablo025-blip/KINKSIST-API",
+      "featured": false
+    },
+    {
+      "title": "GeoGrade IA",
+      "category": "Educação e experiências",
+      "description": "Aplicação de apoio à gestão escolar em Geografia: cadastro de alunos, organização de períodos e análise de respostas com recursos de IA. O repositório inclui uma interface React e integrações com Firebase e modelos Google.",
+      "stack": [
+        "React",
+        "Firebase",
+        "Google GenAI"
+      ],
+      "url": "https://github.com/rhuanspablo025-blip/GEO-IA",
+      "featured": false
+    },
+    {
+      "title": "Herbal Suplementos",
+      "category": "Colaboração",
+      "description": "Colaboração em site institucional e catálogo de suplementos com painel administrativo. O projeto documenta produtos, categorias, imagens, pedidos, relatórios e armazenamento no MongoDB; o repositório pertence à Herbal Suplementos.",
+      "stack": [
+        "Node.js",
+        "Express",
+        "MongoDB"
+      ],
+      "url": "https://github.com/herbalsuplementos/Herbalsuplementos",
+      "featured": false
+    },
+    {
+      "title": "A Jornada do Herói · IF TECH JR",
+      "category": "Colaboração",
+      "description": "Jogo de navegador para eventos da IF TECH JR, com três fases, níveis de dificuldade, história interativa, personalização visual e controles por teclado ou clique. Participação em repositório da empresa júnior.",
+      "stack": [
+        "JavaScript",
+        "CSS",
+        "HTML"
+      ],
+      "url": "https://github.com/IFtechjunior/jogo",
+      "featured": false
+    },
+    {
+      "title": "oneDashOne · IFtechJunior",
+      "category": "Colaboração",
+      "description": "Projeto educacional de GameMaker desenvolvido em equipe: uma fase de plataforma 2D para demonstrar movimentação, colisão, inimigos, itens e lógica de jogos. Minha conta tem acesso como colaborador ao repositório.",
+      "stack": [
+        "GameMaker",
+        "GML"
+      ],
+      "url": "https://github.com/igorcangussu/oneDashOne",
+      "featured": false
+    },
+    {
+      "title": "Site do queijo",
+      "category": "Sites e landing pages",
+      "description": "Site de divulgação dos produtores de queijo de Porteirinha para a Festa do Queijo, desenvolvido em parceria com a empresa júnior da faculdade.",
+      "stack": [
+        "React",
+        "TypeScript",
+        "CSS"
+      ],
+      "featured": false
+    },
+    {
+      "title": "Landing page do sorteio",
+      "category": "Sites e landing pages",
+      "description": "Coordenação e desenvolvimento de uma landing page para a ganhadora de um sorteio realizado pela empresa júnior da faculdade.",
+      "stack": [
+        "React",
+        "TypeScript",
+        "CSS"
+      ],
+      "featured": false
+    },
+    {
+      "title": "Ficha de treino Gilmarcio",
+      "category": "Sites e landing pages",
+      "description": "Aplicação web para organizar e apresentar uma ficha de treino personalizada, com foco em consulta simples pelo aluno.",
+      "stack": [
+        "React",
+        "TypeScript",
+        "CSS"
+      ],
+      "url": "https://github.com/rhuanspablo025-blip/fincha-de-treino-gilmarcio",
+      "featured": false
+    }
   ],
-  "stack": ["Python", "FastAPI", "TypeScript", "React", "PostgreSQL", "SQLite", "Pandas", "Git", "Analista de sistemas"]
+  "stack": [
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Fastify",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "Turso/libSQL",
+    "SQLite",
+    "MongoDB",
+    "Firebase",
+    "Git"
+  ]
 }
