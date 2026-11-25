@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS stack (
 INSERT INTO site_settings (key, value) VALUES
   ('nav', '["Sobre", "Sobre mim", "Serviços", "Projetos", "Stack", "Contato"]'),
   ('socials', '{"linkedin":"https://www.linkedin.com/in/rhuanspablodev","github":"https://github.com/rhuanspablo025-blip","instagram":"https://www.instagram.com/rhuan_santosz/"}'),
-  ('business', '{"name":"Rhuan Pablo Santos de Sá","registration":"MEI","cnpj":"68.776.600/0001-80"}')
+  ('business', '{"name":"Rhuan Pablo Santos de Sá","registration":"MEI","cnpj":"69.550.494/0001-84"}')
 ON CONFLICT (key) DO NOTHING;
 
 INSERT INTO services (number, title, text, tags) VALUES
